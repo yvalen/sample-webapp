@@ -1,0 +1,3 @@
+curl -i -H "Content-Type: application/json" -H "Accept: application/json" -X POST 'http://localhost:8080/greeting' --data '{"greeter":"sam","message":"hello from Sam"}'
+curl -i -H "Content-Type: application/json" -H "Accept: application/json" -X POST 'http://localhost:8080/greeting' --data '{"greeter":"jerry","message":"hello from Jerry"}'
+

@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.playground'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	compile.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+	compile.exclude group: "org.springframework.boot", module: "logback-classic"
+	compile.exclude group:'ch.qos.logback'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-log4j2')
+	compile('joda-time:joda-time:2.9.2')
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.0"
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
