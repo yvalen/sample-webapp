@@ -4,6 +4,8 @@ import com.playground.samplewebapp.controller.Greeting;
 import com.playground.samplewebapp.repository.GreetingRepository;
 import com.playground.samplewebapp.repository.entity.GreetingEntity;
 import com.playground.samplewebapp.service.GreetingService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class GreetingServiceImpl implements GreetingService {
+    private static final Logger logger = LogManager.getLogger();
+
     private final GreetingRepository greetingRepository;
 
     @Autowired
@@ -34,6 +38,7 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     public List<Greeting> getGreetingsFromUser(String user) {
         List<GreetingEntity> entities = greetingRepository.findByUser(user);
+        logger.debug("Greetings from {}: {}", user, entities);
         return entities.stream().map(Greeting::fromEntity).collect(Collectors.toList());
     }
 }

@@ -24,8 +24,6 @@ repositories {
 
 configurations {
 	compile.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
-	compile.exclude group: "org.springframework.boot", module: "logback-classic"
-	compile.exclude group:'ch.qos.logback'
 }
 
 dependencies {
@@ -33,6 +31,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-log4j2')
 	compile('joda-time:joda-time:2.9.2')
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.0"
+	compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.0"
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile "pl.pragmatists:JUnitParams:1.0.5"
+    testCompile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.5'
 }

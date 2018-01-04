@@ -54,6 +54,26 @@ public class Greeting {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Greeting greeting = (Greeting) o;
+
+        if (!greeter.equals(greeting.greeter)) return false;
+        if (!message.equals(greeting.message)) return false;
+        return timestamp != null ? timestamp.equals(greeting.timestamp) : greeting.timestamp == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = greeter.hashCode();
+        result = 31 * result + message.hashCode();
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        return result;
+    }
+
     public static Greeting fromEntity(GreetingEntity entity) {
         return new Greeting(entity.getUser(), entity.getMessage(), entity.getTimestamp());
     }

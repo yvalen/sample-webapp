@@ -19,6 +19,8 @@
 ### NetBeans ###
 nbproject/private/
 build/
+out/
+logs/
 nbbuild/
 dist/
 nbdist/
